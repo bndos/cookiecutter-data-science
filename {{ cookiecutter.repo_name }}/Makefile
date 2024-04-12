@@ -55,7 +55,7 @@ install-dependencies:
 	$(CONDA_ACTIVATE) $(ENV_NAME); \
 	{%- endif %}
 	{%- if cookiecutter.use_poetry == "y" %}
-	poetry install
+	poetry install --no-root
 	{%- else -%}
 	pip install -r requirements.txt
 	{%- endif %}
