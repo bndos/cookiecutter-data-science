@@ -3,6 +3,10 @@ ENV_NAME := {{ cookiecutter.env_name }}
 ENV_MANAGER := {{ cookiecutter.env_manager }}
 PYTHON_VERSION := {{ cookiecutter.python_version }}
 
+{%- if cookiecutter.env_manager == "pyenv" %}
+VENV_DIR := $(shell pyenv root)/versions/$(ENV_NAME)
+{%- endif %}
+
 {%- if cookiecutter.env_manager == "conda" %}
 CONDA_ACTIVATE := source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate
 {%- endif %}
@@ -16,14 +20,15 @@ all: setup-env install-dependencies
 env:
     {%- if cookiecutter.env_manager == "pyenv" %}
 	@echo "Creating the Pyenv environment..."
-	if [ -d "$(pyenv root)/versions/$(ENV_NAME)" ]; then \
+	@if [ -d "$(VENV_DIR)" ]; then \
 		echo "Environment $(ENV_NAME) already exists. Please remove it before running this script."; \
-		exit 0; \
+	else \
+		pyenv install --skip-existing $(PYTHON_VERSION); \
+		pyenv virtualenv $(PYTHON_VERSION) $(ENV_NAME); \
+		echo "Environment $(ENV_NAME) created. Please activate the environment by running 'pyenv activate $(ENV_NAME)'."; \
 	fi
-	pyenv install --skip-existing $(PYTHON_VERSION)
-	pyenv virtualenv $(PYTHON_VERSION) $(ENV_NAME)
 	{%- if cookiecutter.use_poetry == "y" %}
-	pyenv activate $(ENV_NAME); \
+	source "$(VENV_DIR)/bin/activate"; \
 	pip install poetry ; \
 	poetry init --no-interaction
 	{%- endif %}
@@ -49,7 +54,7 @@ install-dependencies:
 	@echo "Installing dependencies using Conda..."
 	$(CONDA_ACTIVATE) $(ENV_NAME); \
 	{%- endif %}
-	{%- if cookiecutter.use_poetry == "y" -%}
+	{%- if cookiecutter.use_poetry == "y" %}
 	poetry install
 	{%- else -%}
 	pip install -r requirements.txt
