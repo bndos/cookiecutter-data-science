@@ -1,0 +1,55 @@
+{%- raw -%}
+% \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+% \setmainfont{Open Sans}
+\setmonofont{Consolas}[Scale=0.7]
+\floatstyle{plaintop}
+\restylefloat{table}
+% \titleformat{\paragraph}
+% {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+% \titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex
+%   plus .2ex}
+
+% \titlespacing{\section}{0pt}{\parskip}{-\parskip}
+
+\graphicspath{{./img/}}
+
+% \tcbset{colframe=white}
+
+\hypersetup{
+  colorlinks,
+  linkcolor={red!50!black},
+  citecolor={blue!50!black},
+  urlcolor={blue!80!black}
+}
+
+\lstset{
+  basicstyle=\ttfamily,
+  backgroundcolor=\color{gray},
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\definecolor{monokaibg}{HTML}{272822}
+\definecolor{borlandbg}{HTML}{eeeeee}
+\definecolor{sectionbg}{HTML}{56b0c9}
+\definecolor{titlepagebg}{HTML}{44899d}
+% \definecolor{Text}{HTML}{FFFFFF}
+% \AtBeginEnvironment{minted}{\color{Text}}
+
+\newcommand{\csection}[1]{
+  \begin{tcolorbox}[colback=sectionbg]
+    \section{#1}
+  \end{tcolorbox}
+  \noindent
+}
+
+% \BeforeBeginEnvironment{minted}{\vspace{-10mm}}
+\AfterEndEnvironment{minted}{\vspace{-14mm}}
+
+\setminted{
+  baselinestretch=.9, % Adjust line spacing
+  xleftmargin=0pt,
+  xrightmargin=0pt,
+}
+{%- endraw %}

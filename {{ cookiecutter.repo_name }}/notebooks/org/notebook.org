@@ -1,0 +1,55 @@
+#+TITLE: {{ cookiecutter.project_name }}
+#+AUTHOR: Brando Tovar
+#+PROPERTY: header-args:python :session :results output :comments link :exports both
+#+LANGUAGE: en
+#+OPTIONS: title:nil author:nil date:nil toc:nil
+#+LATEX_HEADER: \usepackage[AUTO]{babel}
+#+LATEX_HEADER: \input{packages}
+#+LATEX_HEADER: \input{config}
+#+LATEX_HEADER: \onehalfspacing
+# for APA7
+#+latex_header: \addbibresource{references.bib}
+#+latex_header: \let\cite\parencite
+#+latex_header: \nocite{*}
+
+
+#+LATEX_CLASS: extarticle
+#+LATEX_CLASS_OPTIONS: [11pt]
+
+#+begin_export latex
+\tableofcontents
+\newpage
+#+end_export
+
+* Make dataset
+#+begin_src python :tangle ../src/data/make_dataset.py
+#+end_src
+
+* Build features
+#+begin_src python :tangle ../src/features/build_features.py
+#+end_src
+
+* Train model
+#+begin_src python :tangle ../src/models/train_model.py
+#+end_src
+
+* Predict model
+#+begin_src python :tangle ../src/models/predict_model.py
+#+end_src
+
+* Evaluate model
+#+begin_src python :tangle ../src/models/evaluate_model.py
+#+end_src
+
+* Visualize
+#+begin_src python :tangle ../src/visualization/visualize.py
+#+end_src
+
+* Conclusion
+
+
+
+\newpage
+\phantomsection
+\addcontentsline{toc}{section}{References}
+[[printbibliography:]]
