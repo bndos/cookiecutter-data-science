@@ -57,11 +57,11 @@ install-dependencies:
 
 .PHONY: clean
 clean:
-	{%- if cookiecutter.env_manager == "pyenv" %}
+	{%- if cookiecutter.env_manager == "conda" %}
 	@echo "Removing the Conda environment..."
 	conda env remove --name $(ENV_NAME)
 	@echo "Environment $(ENV_NAME) has been removed."
-	{%- elif cookiecutter.env_manager == "conda" %}
+	{%- elif cookiecutter.env_manager == "pyenv" %}
 	@echo "Removing the Pyenv environment..."
 	pyenv virtualenv-delete -f $(ENV_NAME)
 	@echo "Environment $(ENV_NAME) has been removed."
