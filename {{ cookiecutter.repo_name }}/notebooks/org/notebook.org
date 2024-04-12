@@ -22,27 +22,27 @@
 #+end_export
 
 * Make dataset
-#+begin_src python :tangle ../src/data/make_dataset.py
+#+begin_src python :tangle ../../src/data/make_dataset.py
 #+end_src
 
 * Build features
-#+begin_src python :tangle ../src/features/build_features.py
+#+begin_src python :tangle ../../src/features/build_features.py
 #+end_src
 
 * Train model
-#+begin_src python :tangle ../src/models/train_model.py
+#+begin_src python :tangle ../../src/models/train_model.py
 #+end_src
 
 * Predict model
-#+begin_src python :tangle ../src/models/predict_model.py
+#+begin_src python :tangle ../../src/models/predict_model.py
 #+end_src
 
 * Evaluate model
-#+begin_src python :tangle ../src/models/evaluate_model.py
+#+begin_src python :tangle ../../src/models/evaluate_model.py
 #+end_src
 
 * Visualize
-#+begin_src python :tangle ../src/visualization/visualize.py
+#+begin_src python :tangle ../../src/visualization/visualize.py
 #+end_src
 
 * Conclusion
