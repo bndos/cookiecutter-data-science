@@ -3,3 +3,4 @@ report.tex
 *.bbl
 .auctex-auto/
 _minted-report/
+notebook.tex
